@@ -40,6 +40,11 @@ class DatabaseSeeder extends Seeder
             'slug' => 'mobile-programming',
         ]);
 
+        Category::create([
+            'name' => 'Web Desain',
+            'slug' => 'web-desain',
+        ]);
+
         Post::factory(20)->create();
 
         // Post::create([
