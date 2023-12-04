@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'web-desain',
         ]);
 
-        Post::factory(20)->create();
+        Post::factory(80)->create();
 
         // Post::create([
         //     'title' => 'Kotlin untuk Mobile Programming',

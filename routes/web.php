@@ -34,26 +34,10 @@ Route::get('categories', function () {
     ]);
 });
 
-Route::get('category/{category:slug}', function (Category $category) {
-    return view('category', [
-        'title' => $category->name,
-        'active' => 'categories',
-        'posts' => $category->posts->load(['category', 'author']),
-    ]);
-});
-
 Route::get('authors', function () {
     return view('authors', [
         'title' => 'Authors',
         'active' => 'authors',
         'authors' => User::latest()->get(),
-    ]);
-});
-
-Route::get('author/{author:username}', function (User $author) {
-    return view('author', [
-        'title' => $author->name,
-        'active' => 'authors',
-        'posts' => $author->posts->load(['category', 'author']),
     ]);
 });
