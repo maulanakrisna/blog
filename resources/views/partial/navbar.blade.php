@@ -15,18 +15,35 @@
         <li class="nav-item">
             <a class="nav-link {{ ($active === "categories") ? 'active':'' }}" href="/categories">Categories</a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link {{ ($active === "authors") ? 'active':'' }}" href="/authors">Authors</a>
-        </li>
+        </li> --}}
         <li class="nav-item">
           <a class="nav-link {{ ($active === "about") ? 'active':'' }}" href="/about">About</a>
         </li>
       </ul>
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-            <a class="nav-link {{ ($active === "about") ? 'active':'' }}"" href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
-        </li>
-      </ul>
+
+      <div class="dropdown ms-auto">
+        @auth
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ auth()->user()->name }}
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-columns"></i> My Dashboard</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <form action="logout" method="POST">
+            @csrf
+            <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
+            </form>
+        </ul>
+        @else
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+            </li>
+          </ul>
+        @endauth
+      </div>
     </div>
   </div>
 </nav>
