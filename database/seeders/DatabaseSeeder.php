@@ -27,8 +27,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'annetjuanita@gmail.com',
         //     'password' => bcrypt('password'),
         // ]);
-
-        User::factory(5)->create();
+        User::factory(20)->create();
 
         Category::create([
             'name' => 'Web Programming',
@@ -45,7 +44,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'web-desain',
         ]);
 
-        Post::factory(80)->create();
+        Post::factory(100)->create();
 
         // Post::create([
         //     'title' => 'Kotlin untuk Mobile Programming',
