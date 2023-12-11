@@ -31,9 +31,9 @@
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-columns"></i> My Dashboard</a></li>
           <li><hr class="dropdown-divider"></li>
-          <form action="logout" method="POST">
+            <form action="logout" method="POST">
             @csrf
-            <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
+                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
             </form>
         </ul>
         @else

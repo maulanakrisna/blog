@@ -1,5 +1,8 @@
-@extends('layouts.main')
+@extends('dashboard.layouts.main')
 
 @section('container')
-<div class="div"><h1>ini halaman dashboard</h1></div>
-@endsection('container')
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+      </div>
+      <h2>hai, {{ auth()->user()->name }}</h2>
+@endsection
