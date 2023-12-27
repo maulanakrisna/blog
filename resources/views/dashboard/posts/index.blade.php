@@ -5,6 +5,7 @@
         <h1 class="h2">Posts</h1>
         <p>{{ auth()->user()->name }}</p>
       </div>
+      <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Create Post</a>
       <div class="table-responsive small">
         <table class="table table-striped table-sm">
           <thead>
