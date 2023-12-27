@@ -7,13 +7,13 @@
       <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard')? 'active' : '' }}" aria-current="page" href="/dashboard">
+            <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/index')? 'active' : '' }}" aria-current="page" href="/dashboard">
                 <i class="bi bi-speedometer"></i>
               Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard')? 'active' : '' }}" href="/dashboard/posts">
+            <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('dashboard/posts*')? 'active' : '' }}" href="/dashboard/posts">
                 <i class="bi bi-file-post"></i>
               My Posts
             </a>
