@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class DashboardPostController extends Controller
 {
@@ -16,7 +17,7 @@ class DashboardPostController extends Controller
     {
         return view('dashboard.posts.index', [
             'title' => 'Your Posts',
-            'posts' => Post::where('user_id', auth()->user()->id)->get(),
+            'posts' => Post::where('user_id', auth()->user()->id)->latest()->get(),
         ]);
     }
 
@@ -50,7 +51,7 @@ class DashboardPostController extends Controller
             'body' => 'required',
         ]);
 
-        $validatedData['excerpt'] = Str::limit($request->body, 20, '...');
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 20, '...');
         $validatedData['user_id'] = auth()->user()->id;
 
         Post::create($validatedData);
