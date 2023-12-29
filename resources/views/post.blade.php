@@ -8,10 +8,10 @@
                 <h5>by <a href="/posts?author={{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a>
                     in <a href="/posts?category={{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a></h5>
                 <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="card-img-top pt-3" alt="{{ $post->title }}">
-                <article class="mt-3 pt-3">
+                <article class="my-3 pt-3">
                     {!! $post->body !!}
                 </article>
-                <a href="/posts" class="d-block mt-3 text-decoration-none">back to posts</a>
+                <a href="/posts" class="btn btn-primary mb-5">back to posts</a>
             </div>
         </div>
     </div>
