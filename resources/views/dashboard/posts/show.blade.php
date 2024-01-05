@@ -14,7 +14,11 @@
                     <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3"></i></button>
                 </form>
             </h5>
-            <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="card-img-top pt-3" alt="{{ $post->title }}">
+            @if ($post->image)
+                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}">
+            @else
+                <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="card-img-top pt-3" alt="{{ $post->title }}">
+            @endif
             <article class="mt-3 pt-3">
                 {!! $post->body !!}
             </article>
