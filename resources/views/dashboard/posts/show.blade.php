@@ -15,7 +15,7 @@
                 </form>
             </h5>
             @if ($post->image)
-                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}">
+                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" style="max-height: 400px; overflow:hidden;">
             @else
                 <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="card-img-top pt-3" alt="{{ $post->title }}">
             @endif

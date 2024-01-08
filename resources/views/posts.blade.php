@@ -26,7 +26,13 @@
 
         <div class="card mb-3">
             <a href="/post/{{ $posts[0]->slug }}">
+            @if ($posts[0]->image)
+                <div style="max-height: 400px; overflow:hidden">
+                <img src="{{ asset('storage/' . $posts[0]->image) }}" alt="{{ $posts[0]->title }}" class="card-img-top">
+            </div>
+            @else
                 <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->title }}">
+            @endif
             </a>
             <div class="card-body text-center">
                 <h5 class="card-title">
@@ -55,7 +61,11 @@
                     <div class="position-absolute text-white text-decoration-none px-2 py-2" style="background-color: rgba(0,0,0,0.7)">
                     {{ $post->category->name }}</div></a>
                 <a href="/post/{{ $post->slug }}">
-                    <img src="https://source.unsplash.com/400x400?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->title }}">
+                    @if ($post->image)
+                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="card-img-top pt-3">
+                    @else
+                        <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}" class="card-img-top pt-3" alt="{{ $post->title }}">
+                    @endif
                 </a>
                 <div class="card-body">
                     <h5 class="card-title"><a href="/post/{{ $post->slug }}" class="text-decoration-none text-dark">
