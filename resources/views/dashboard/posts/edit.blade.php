@@ -6,7 +6,7 @@
         <p>{{ auth()->user()->name }}</p>
       </div>
       <div class="col-lg-8">
-        <form method="POST" action="/dashboard/posts/{{ $post->slug }}">
+        <form method="POST" action="/dashboard/posts/{{ $post->slug }}" enctype="multipart/form-data">
             @method('put')
             @csrf
             <div class="mb-3">
@@ -41,6 +41,21 @@
                   </select>
             </div>
             <div class="mb-3">
+                <label for="image" class="form-label ">Image</label>
+                @if ($post->image)
+                    <img src="{{ asset('storage/' . $post->image) }}" class="d-block img-preview img-fluid mb-3 col-sm-5" id="img-preview">
+                @else
+                    <img class="img-preview img-fluid mb-3 col-sm-5" id="img-preview">
+                @endif
+                <input type="hidden" value="{{ $post->image }}" name="oldImage" id="oldImage">
+                <input class="form-control @error('image')
+                    is-invalid
+                @enderror" type="file" id="image" name="image" onchange="previewImage()">
+            </div>
+            @error('image')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+            <div class="mb-3">
                 <label for="body" class="form-label">Body</label>
                 @error('body')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -64,6 +79,18 @@
         document.addEventListener('trix-file-accept', function(e) {
             e.preventDefault();
         });
+
+        function previewImage(){
+            const inputImage = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(inputImage.files[0]);
+
+            fileReader.onload = function (event) {
+                imgPreview.src = event.target.result;
+            }
+        }
       </script>
 
 @endsection
