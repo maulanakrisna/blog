@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
@@ -61,3 +62,4 @@ Route::get('dashboard', function () {
 
 Route::get('/dashboard/posts/makeslug', [DashboardPostController::class, 'makeSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('auth');
