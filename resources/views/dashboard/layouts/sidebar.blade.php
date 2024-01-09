@@ -19,10 +19,11 @@
             </a>
           </li>
         </ul>
+
+        @can('admin')
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted px-3 mt-4 mb-1">
             <span>Administrator</span>
         </h6>
-
 
         <ul class="nav flex-column">
             <li class="nav-item">
@@ -32,7 +33,8 @@
                 </a>
             </li>
         </ul>
-        <hr class="my-3">
+        @endcan
+        {{-- <hr class="my-3">
         <ul class="nav flex-column mb-auto">
           <li class="nav-item">
             <form action="/logout" method="POST" class="nav-link d-flex align-items-center gap-2">
@@ -40,7 +42,7 @@
                   <button type="submit" class="dropdown-item"><i class="bi bi-door-closed"></i> Logout</button>
               </form>
           </li>
-        </ul>
+        </ul> --}}
       </div>
     </div>
   </div>

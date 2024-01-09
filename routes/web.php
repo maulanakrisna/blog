@@ -9,12 +9,12 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home', [
-        'title' => 'Home',
-        'active' => 'home',
-    ]);
-});
+// Route::get('/', function () {
+//     return view('home', [
+//         'title' => 'Home',
+//         'active' => 'home',
+//     ]);
+// });
 
 Route::get('/about', function () {
     return view('about', [
@@ -26,6 +26,7 @@ Route::get('/about', function () {
     ]);
 });
 
+Route::get('/', [PostController::class, 'index']);
 Route::get('posts', [PostController::class, 'index']);
 
 Route::get('post/{post:slug}', [PostController::class, 'show']);
@@ -60,6 +61,7 @@ Route::get('dashboard', function () {
     ]);
 })->middleware('auth');
 
+
 Route::get('/dashboard/posts/makeslug', [DashboardPostController::class, 'makeSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
-Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show');

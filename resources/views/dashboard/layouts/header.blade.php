@@ -12,7 +12,28 @@
         </button>
       </li>
     </ul>
-    <div id="navbarSearch" class="navbar-search w-100">
+    {{-- <div id="navbarSearch" class="navbar-search w-100">
       <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-    </div>
+    </div> --}}
+    <div class="dropdown ms-auto mx-3 px-3">
+        @auth
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ auth()->user()->name }}
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-columns"></i> My Dashboard</a></li>
+          <li><hr class="dropdown-divider"></li>
+            <form action="/logout" method="POST">
+            @csrf
+                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
+            </form>
+        </ul>
+        @else
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+            </li>
+          </ul>
+        @endauth
+      </div>
   </header>
