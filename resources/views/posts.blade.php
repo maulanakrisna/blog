@@ -62,9 +62,9 @@
                     {{ $post->category->name }}</div></a>
                 <a href="/post/{{ $post->slug }}">
                     @if ($post->image)
-                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="card-img-top pt-3">
+                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="card-img-top">
                     @else
-                        <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}" class="card-img-top pt-3" alt="{{ $post->title }}">
+                        <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->title }}">
                     @endif
                 </a>
                 <div class="card-body">
